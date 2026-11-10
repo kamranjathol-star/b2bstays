@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>B2B Stays — Partner Portal | Saudi Arabia Travel Services</title>
+  <meta name="description" content="Partner portal for travel agents and corporates: B2B visas, hotels, sightseeing, airport transfers, transportation, train tickets and corporate tours across Saudi Arabia.">
+  <meta name="theme-color" content="#04201b">
+  <link rel="icon" href="assets/img/logo-mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<a class="skip" href="#login" data-i18n="skip">Skip to sign in</a>
+
+<!-- ======================= ICON SPRITE ======================= -->
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-visa" viewBox="0 0 24 24"><rect x="4.5" y="2.5" width="15" height="19" rx="2.5"/><circle cx="12" cy="10" r="3.2"/><path d="M8.5 17h7"/></symbol>
+    <symbol id="i-bed" viewBox="0 0 24 24"><path d="M3 19v-9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v9"/><path d="M3 16h18"/><path d="M7 8V6a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v2"/><path d="M3 19v2M21 19v2"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></symbol>
+    <symbol id="i-plane" viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></symbol>
+    <symbol id="i-bus" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="15" rx="3"/><path d="M4 7h16M4 11h16M9 18v2.5M15 18v2.5"/><circle cx="8" cy="14.5" r=".6"/><circle cx="16" cy="14.5" r=".6"/></symbol>
+    <symbol id="i-train" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="15" rx="3.5"/><path d="M5 11h14M9 18l-2.5 3M15 18l2.5 3M9.5 6.5h5"/><circle cx="9" cy="14.5" r=".6"/><circle cx="15" cy="14.5" r=".6"/></symbol>
+    <symbol id="i-brief" viewBox="0 0 24 24"><rect x="2.5" y="7" width="19" height="13.5" rx="2.5"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2M2.5 13h19"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="3.5" y="11" width="17" height="10.5" rx="2.5"/><path d="M7.5 11V7.5a4.5 4.5 0 0 1 9 0V11"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-eye-off" viewBox="0 0 24 24"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 19c-7 0-10-7-10-7a18.5 18.5 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 10 7 10 7a18.5 18.5 0 0 1-2.16 3.19M14.12 14.12a3 3 0 1 1-4.24-4.24M1 1l22 22"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18M2 22h20M10 6h4M10 10h4M10 14h4M10 18h4"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m22 7-10 6L2 7"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol id="i-mobile" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 18h.01"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5M11 5l-7 7 7 7"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></symbol>
+    <symbol id="i-wallet" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="15" rx="3"/><path d="M2 10h20M16 15h2"/></symbol>
+    <symbol id="i-badge" viewBox="0 0 24 24"><path d="M12 2l2.4 2.1 3.2-.2.9 3.1 2.7 1.8-1 3.1 1 3.1-2.7 1.8-.9 3.1-3.2-.2L12 22l-2.4-2.1-3.2.2-.9-3.1L2.8 15l1-3.1-1-3.1 2.7-1.8.9-3.1 3.2.2z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></symbol>
+  </defs>
+</svg>
+
+<!-- ======================= TOP BAR ======================= -->
+<header class="topbar" id="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="B2B Stays — home">
+      <img class="logo" src="assets/img/logo-mark.svg" alt="" width="40" height="40">
+      <span class="brand-text"><b>B2B Stays</b><small data-i18n="brand.tag">Saudi Travel Partners</small></span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <a href="#services" data-i18n="nav.services">Services</a>
+      <a href="#how" data-i18n="nav.how">How it works</a>
+      <a href="#corporate" data-i18n="nav.corp">Corporate tours</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </nav>
+
+    <div class="top-right">
+      <div class="clock" id="clock" role="timer" aria-live="off">
+        <svg class="i"><use href="#i-clock"/></svg>
+        <span class="clock-city" data-i18n="clock.city">Riyadh</span>
+        <b id="clockTime">--:--</b>
+        <span class="dot-sep" aria-hidden="true">•</span>
+        <span id="clockDate"></span>
+      </div>
+      <button class="lang" id="langBtn" type="button" aria-label="Switch language">
+        <svg class="i"><use href="#i-globe"/></svg><span id="langLabel">العربية</span>
+      </button>
+      <button class="btn btn-ghost" type="button" data-open-register>
+        <span data-i18n="nav.register">Become a partner</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+<!-- ======================= HERO ======================= -->
+<section class="hero" id="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="aurora a1"></div>
+    <div class="aurora a2"></div>
+    <div class="geo"></div>
+    <div class="stars"></div>
+    <div class="ring"></div>
+
+    <svg class="skyline" viewBox="0 0 1600 360" preserveAspectRatio="xMidYMax meet" focusable="false">
+      <defs>
+        <linearGradient id="skFar" gradientUnits="userSpaceOnUse" x1="0" y1="160" x2="0" y2="360">
+          <stop offset="0" stop-color="#2a8f7a" stop-opacity=".42"/><stop offset="1" stop-color="#0b5a4b" stop-opacity=".08"/>
+        </linearGradient>
+        <linearGradient id="skMid" gradientUnits="userSpaceOnUse" x1="0" y1="60" x2="0" y2="360">
+          <stop offset="0" stop-color="#15735f"/><stop offset=".55" stop-color="#083d33"/><stop offset="1" stop-color="#041f1a"/>
+        </linearGradient>
+        <linearGradient id="skNear" gradientUnits="userSpaceOnUse" x1="0" y1="250" x2="0" y2="360">
+          <stop offset="0" stop-color="#042a23"/><stop offset="1" stop-color="#010d0b"/>
+        </linearGradient>
+        <radialGradient id="skOrb" cx=".4" cy=".35" r=".8">
+          <stop offset="0" stop-color="#fff2c4"/><stop offset=".55" stop-color="#e2bd66"/><stop offset="1" stop-color="#9b7728"/>
+        </radialGradient>
+        <radialGradient id="skGlow">
+          <stop offset="0" stop-color="#f0d99a" stop-opacity=".6"/><stop offset="1" stop-color="#f0d99a" stop-opacity="0"/>
+        </radialGradient>
+        <symbol id="palm" viewBox="-60 -120 120 120" overflow="visible">
+          <g fill="none" stroke="#010d0b" stroke-linecap="round">
+            <path d="M0 0C3 -30 6 -60 2 -92" stroke-width="4.5"/>
+            <g stroke-width="3.6">
+              <path d="M2 -92Q-22 -112 -50 -86"/><path d="M2 -92Q-18 -118 -38 -108"/><path d="M2 -92Q-6 -116 -14 -118"/>
+              <path d="M2 -92Q2 -112 4 -118"/>
+              <path d="M2 -92Q10 -116 20 -116"/><path d="M2 -92Q22 -118 42 -106"/><path d="M2 -92Q26 -112 52 -84"/>
+            </g>
+          </g>
+        </symbol>
+      </defs>
+
+      <!-- far layer -->
+      <g class="lyr lyr-far">
+        <path fill="url(#skFar)" d="M0 360V250H40V225H78V262H120V200H150V236H210V180H236V215H300V245H350V205H382V240H460V190H488V230H540V258H600V220H640V170H664V210H720V245H790V215H830V185H860V228H920V250H980V200H1010V238H1070V262H1140V215H1180V175H1205V225H1260V248H1330V210H1366V240H1420V195H1450V232H1510V255H1560V235H1600V360Z"/>
+      </g>
+
+      <!-- mid layer: Riyadh-inspired skyline -->
+      <g class="lyr lyr-mid">
+        <path fill="url(#skMid)" d="M0 360V298H48V268H96V292H150V258H196V286H250V300H330V284H362V300H478V280H520V246H548V282H600V300H700V272H738V300H800V262H836V290H900V300H1020V276H1050V300H1170V282H1210V250H1240V286H1290V300H1380V270H1416V240H1444V280H1500V298H1600V360Z"/>
+        <g fill="url(#skMid)">
+          <path d="M214 360V196H244V360Z"/>
+          <path d="M588 360V212H626V192H640V360Z"/>
+          <path d="M760 360V150L774 92L788 150V360Z"/>
+          <path d="M938 360V178L982 156V360Z"/>
+          <path d="M1318 360V168H1344V360Z"/>
+          <!-- Al Faisaliyah-style tower with golden orb -->
+          <path d="M398 360L411 142H429L442 360Z"/>
+          <!-- Kingdom Centre-style tower with sky-bridge notch -->
+          <path d="M1085 360V82Q1085 70 1097 70H1100Q1108 128 1120 128Q1132 128 1140 70H1143Q1155 70 1155 82V360Z"/>
+        </g>
+        <path d="M411 142H420L420 360H398Z" fill="#fff" opacity=".035"/>
+        <rect x="1099" y="112" width="42" height="4" fill="#1f8a74" opacity=".6"/>
+        <path d="M420 105V60M1331 168V138" stroke="#15735f" stroke-width="2"/>
+        <circle cx="420" cy="122" r="46" fill="url(#skGlow)"/>
+        <circle cx="420" cy="122" r="17" fill="url(#skOrb)"/>
+        <circle cx="420" cy="58" r="2.4" fill="#f0d99a"/>
+        <circle cx="1331" cy="136" r="2" fill="#f0d99a"/>
+        <circle cx="774" cy="90" r="2.2" fill="#f0d99a"/>
+        <g class="win" fill="#f0d99a">
+          <rect x="1091" y="150" width="3" height="3"/><rect x="1091" y="176" width="3" height="3"/><rect x="1091" y="204" width="3" height="3"/>
+          <rect x="1146" y="160" width="3" height="3"/><rect x="1146" y="190" width="3" height="3"/><rect x="1146" y="226" width="3" height="3"/>
+          <rect x="1120" y="148" width="3" height="3"/><rect x="1120" y="180" width="3" height="3"/><rect x="1120" y="214" width="3" height="3"/>
+          <rect x="418" y="200" width="3" height="3"/><rect x="418" y="238" width="3" height="3"/><rect x="418" y="278" width="3" height="3"/>
+          <rect x="772" y="170" width="3" height="3"/><rect x="772" y="210" width="3" height="3"/><rect x="772" y="250" width="3" height="3"/>
+          <rect x="960" y="198" width="3" height="3"/><rect x="960" y="232" width="3" height="3"/>
+          <rect x="1329" y="190" width="3" height="3"/><rect x="1329" y="230" width="3" height="3"/>
+          <rect x="226" y="214" width="3" height="3"/><rect x="226" y="250" width="3" height="3"/>
+          <rect x="606" y="230" width="3" height="3"/><rect x="606" y="266" width="3" height="3"/>
+        </g>
+      </g>
+
+      <!-- near layer: Diriyah-style mud-brick, palms, dunes -->
+      <g class="lyr lyr-near">
+        <path fill="url(#skNear)" d="M0 360V322C140 304 280 334 440 326S720 300 920 322S1260 336 1420 316S1560 320 1600 326V360Z"/>
+        <g fill="url(#skNear)">
+          <rect x="70" y="304" width="120" height="56"/><rect x="150" y="278" width="78" height="82"/>
+          <rect x="206" y="296" width="118" height="64"/><rect x="112" y="262" width="34" height="98"/>
+          <rect x="1300" y="306" width="90" height="54"/><rect x="1360" y="284" width="70" height="76"/>
+          <rect x="1420" y="300" width="100" height="60"/><rect x="1390" y="262" width="30" height="98"/>
+        </g>
+        <g fill="none" stroke="#021a16" stroke-width="9" stroke-dasharray="12 8">
+          <path d="M70 299.5H190M150 273.5H228M206 291.5H324M1300 301.5H1390M1360 279.5H1430M1420 295.5H1520"/>
+          <path d="M112 257.5H146M1390 257.5H1420" stroke-dasharray="8 6"/>
+        </g>
+        <g fill="#f0d99a" opacity=".5">
+          <path d="M92 336l5-12l5 12z"/><path d="M170 330l5-14l5 14z"/><path d="M250 338l5-12l5 12z"/><path d="M127 300l4-12l4 12z"/><path d="M290 340l5-12l5 12z"/>
+          <path d="M1322 338l5-12l5 12z"/><path d="M1382 330l5-14l5 14z"/><path d="M1452 338l5-12l5 12z"/><path d="M1400 296l4-12l4 12z"/>
+        </g>
+        <use href="#palm" x="492" y="244" width="96" height="96"/>
+        <use href="#palm" x="548" y="250" width="84" height="84"/>
+        <use href="#palm" x="940" y="238" width="104" height="104"/>
+        <use href="#palm" x="1188" y="244" width="92" height="92"/>
+        <use href="#palm" x="1530" y="226" width="108" height="108"/>
+        <use href="#palm" x="720" y="262" width="76" height="76"/>
+        <use href="#palm" x="-10" y="240" width="100" height="100"/>
+      </g>
+    </svg>
+    <div class="grain"></div>
+  </div>
+
+  <div class="hero-grid">
+    <!-- ---------- LEFT: story + services ---------- -->
+    <div class="hero-copy">
+      <span class="eyebrow"><i class="pulse"></i><span data-i18n="hero.eyebrow">Kingdom of Saudi Arabia · Partners only</span></span>
+      <h1 data-i18n="hero.title">Every journey in the Kingdom, <em>one partner portal.</em></h1>
+      <p class="lead" data-i18n="hero.lead">Visas, hotels, sightseeing, transfers, transport and rail — with net rates, live availability and a dedicated desk behind every booking.</p>
+
+      <div class="svc-wrap">
+        <div class="svc-tabs" role="tablist" aria-label="Our services" id="svcTabs">
+          <button class="svc-tab" role="tab" type="button" aria-selected="true" data-svc="visa"><span class="ico"><svg class="i"><use href="#i-visa"/></svg></span><span data-i18n="tab.visa">Visas</span><i class="bar"></i></button>
+          <button class="svc-tab" role="tab" type="button" aria-selected="false" data-svc="hotels"><span class="ico"><svg class="i"><use href="#i-bed"/></svg></span><span data-i18n="tab.hotels">Hotels</span><i class="bar"></i></button>
+          <button class="svc-tab" role="tab" type="button" aria-selected="false" data-svc="sights"><span class="ico"><svg class="i"><use href="#i-camera"/></svg></span><span data-i18n="tab.sights">Sightseeing</span><i class="bar"></i></button>
+          <button class="svc-tab" role="tab" type="button" aria-selected="false" data-svc="transfers"><span class="ico"><svg class="i"><use href="#i-plane"/></svg></span><span data-i18n="tab.transfers">Transfers</span><i class="bar"></i></button>
+          <button class="svc-tab" role="tab" type="button" aria-selected="false" data-svc="transport"><span class="ico"><svg class="i"><use href="#i-bus"/></svg></span><span data-i18n="tab.transport">Transport</span><i class="bar"></i></button>
+          <button class="svc-tab" role="tab" type="button" aria-selected="false" data-svc="train"><span class="ico"><svg class="i"><use href="#i-train"/></svg></span><span data-i18n="tab.train">Trains</span><i class="bar"></i></button>
+          <button class="svc-tab" role="tab" type="button" aria-selected="false" data-svc="corp"><span class="ico"><svg class="i"><use href="#i-brief"/></svg></span><span data-i18n="tab.corp">Corporate tours</span><i class="bar"></i></button>
+        </div>
+
+        <div class="preview" aria-live="polite">
+          <!-- VISA -->
+          <article class="pv is-active" data-svc="visa" role="tabpanel">
+            <div class="pv-text">
+              <h3 data-i18n="pv.visa.t">B2B Visa Services</h3>
+              <p data-i18n="pv.visa.d">Umrah, tourist, business and transit visas — with bulk uploads, fast-track processing and live status tracking.</p>
+              <ul class="ticks"><li data-i18n="pv.visa.l1">Bulk passport upload</li><li data-i18n="pv.visa.l2">Fast-track option</li><li data-i18n="pv.visa.l3">Live status tracking</li></ul>
+            </div>
+            <div class="mock">
+              <div class="mock-head"><span><span data-i18n="pv.visa.m">Umrah visa</span> · <b>VS-48213</b></span><span class="sample" data-i18n="pv.sample">Sample</span></div>
+              <ol class="steps">
+                <li class="done"><i></i><span data-i18n="pv.visa.s1">Application received</span><em>09:12</em></li>
+                <li class="done"><i></i><span data-i18n="pv.visa.s2">Documents verified</span><em>09:40</em></li>
+                <li class="live"><i></i><span data-i18n="pv.visa.s3">Under review</span><em>…</em></li>
+                <li><i></i><span data-i18n="pv.visa.s4">Visa issued</span><em>—</em></li>
+              </ol>
+            </div>
+          </article>
+
+          <!-- HOTELS -->
+          <article class="pv" data-svc="hotels" role="tabpanel">
+            <div class="pv-text">
+              <h3 data-i18n="pv.hotels.t">Hotels across the Kingdom</h3>
+              <p data-i18n="pv.hotels.d">Contracted net rates in Makkah, Madinah, Riyadh, Jeddah, AlUla and the Red Sea — from 3★ to luxury.</p>
+              <ul class="ticks"><li data-i18n="pv.hotels.l1">Net B2B rates</li><li data-i18n="pv.hotels.l2">Live availability</li><li data-i18n="pv.hotels.l3">Instant vouchers</li></ul>
+            </div>
+            <div class="mock mock-hotel">
+              <div class="hotel-img"><span class="chip" data-i18n="pv.hotels.c">Free cancellation</span><span class="sample on-img" data-i18n="pv.sample">Sample</span></div>
+              <div class="hotel-body">
+                <b data-i18n="pv.hotels.n">Sample Hotel · Makkah</b>
+                <span class="stars" aria-label="5 stars">★★★★★</span>
+                <span class="muted" data-i18n="pv.hotels.dist">250 m to the Haram</span>
+                <div class="price"><small data-i18n="pv.hotels.r">Net rate / night</small><b>SAR 420</b></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- SIGHTSEEING -->
+          <article class="pv" data-svc="sights" role="tabpanel">
+            <div class="pv-text">
+              <h3 data-i18n="pv.sights.t">Sightseeing &amp; experiences</h3>
+              <p data-i18n="pv.sights.d">Heritage, nature and entertainment — from Diriyah and AlUla to the Edge of the World and the Red Sea.</p>
+              <ul class="ticks"><li data-i18n="pv.sights.l1">Private &amp; group tours</li><li data-i18n="pv.sights.l2">Licensed guides</li><li data-i18n="pv.sights.l3">Flexible pickup</li></ul>
+            </div>
+            <div class="mock">
+              <div class="mock-head"><span data-i18n="pv.sights.m">Popular experiences</span><span class="sample" data-i18n="pv.sample">Sample</span></div>
+              <ul class="tours">
+                <li><svg class="i"><use href="#i-pin"/></svg><span data-i18n="pv.sights.t1">Diriyah heritage walk</span><em>3h</em></li>
+                <li><svg class="i"><use href="#i-pin"/></svg><span data-i18n="pv.sights.t2">AlUla · Hegra day tour</span><em>8h</em></li>
+                <li><svg class="i"><use href="#i-pin"/></svg><span data-i18n="pv.sights.t3">Edge of the World trek</span><em>6h</em></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- TRANSFERS -->
+          <article class="pv" data-svc="transfers" role="tabpanel">
+            <div class="pv-text">
+              <h3 data-i18n="pv.transfers.t">Airport transfers</h3>
+              <p data-i18n="pv.transfers.d">Meet-and-greet pickups at RUH, JED, MED and DMM with fixed B2B pricing and flight tracking.</p>
+              <ul class="ticks"><li data-i18n="pv.transfers.l1">Meet &amp; greet</li><li data-i18n="pv.transfers.l2">Flight tracking</li><li data-i18n="pv.transfers.l3">Fixed B2B pricing</li></ul>
+            </div>
+            <div class="mock">
+              <div class="mock-head"><span data-i18n="pv.transfers.m">Arrival transfer</span><span class="sample" data-i18n="pv.sample">Sample</span></div>
+              <div class="route">
+                <div class="r-pt"><b>RUH</b><small data-i18n="pv.transfers.a">King Khalid Intl</small></div>
+                <div class="r-line"><span class="car"><svg class="i"><use href="#i-bus"/></svg></span></div>
+                <div class="r-pt end"><b data-i18n="pv.transfers.h">Hotel</b><small data-i18n="pv.transfers.hc">Olaya, Riyadh</small></div>
+              </div>
+              <div class="pills"><span data-i18n="v.sedan">Sedan</span><span data-i18n="v.gmc">GMC</span><span data-i18n="v.van">Van</span><span data-i18n="v.coach">Coach</span></div>
+            </div>
+          </article>
+
+          <!-- TRANSPORT -->
+          <article class="pv" data-svc="transport" role="tabpanel">
+            <div class="pv-text">
+              <h3 data-i18n="pv.transport.t">Ground transportation</h3>
+              <p data-i18n="pv.transport.d">Inter-city coaches, vans and chauffeured cars with licensed drivers — by the day or by the transfer.</p>
+              <ul class="ticks"><li data-i18n="pv.transport.l1">Licensed drivers</li><li data-i18n="pv.transport.l2">Modern fleet</li><li data-i18n="pv.transport.l3">Multi-city routes</li></ul>
+            </div>
+            <div class="mock">
+              <div class="mock-head"><span data-i18n="pv.transport.m">Jeddah → Makkah → Madinah</span><span class="sample" data-i18n="pv.sample">Sample</span></div>
+              <ul class="fleet">
+                <li><span data-i18n="v.coach">Coach</span><em data-i18n="pv.seats49">49 seats</em></li>
+                <li><span data-i18n="v.coaster">Coaster</span><em data-i18n="pv.seats29">29 seats</em></li>
+                <li><span data-i18n="v.van">Van</span><em data-i18n="pv.seats11">11 seats</em></li>
+                <li><span data-i18n="v.gmc">GMC</span><em data-i18n="pv.seats6">6 seats</em></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- TRAIN -->
+          <article class="pv" data-svc="train" role="tabpanel">
+            <div class="pv-text">
+              <h3 data-i18n="pv.train.t">Train tickets</h3>
+              <p data-i18n="pv.train.d">Book Haramain high-speed rail and SAR intercity services for individuals and groups.</p>
+              <ul class="ticks"><li data-i18n="pv.train.l1">Group seat blocks</li><li data-i18n="pv.train.l2">Economy &amp; Business</li><li data-i18n="pv.train.l3">E-tickets</li></ul>
+            </div>
+            <div class="mock ticket">
+              <div class="mock-head"><span data-i18n="pv.train.m">Haramain High-Speed</span><span class="sample" data-i18n="pv.sample">Sample</span></div>
+              <div class="tk-route">
+                <div><b data-i18n="pv.train.a">Makkah</b><small>08:30</small></div>
+                <div class="tk-line"><svg class="i"><use href="#i-train"/></svg></div>
+                <div class="end"><b data-i18n="pv.train.b">Madinah</b><small>11:00</small></div>
+              </div>
+              <div class="tk-cls"><span class="on" data-i18n="pv.train.e">Economy</span><span data-i18n="pv.train.bz">Business</span></div>
+            </div>
+          </article>
+
+          <!-- CORPORATE -->
+          <article class="pv" data-svc="corp" role="tabpanel">
+            <div class="pv-text">
+              <h3 data-i18n="pv.corp.t">Corporate tours &amp; MICE</h3>
+              <p data-i18n="pv.corp.d">Meetings, incentives, conferences and delegation programmes — planned end-to-end by a dedicated manager.</p>
+              <ul class="ticks"><li data-i18n="pv.corp.l1">Groups of 20 to 500</li><li data-i18n="pv.corp.l2">Custom itineraries</li><li data-i18n="pv.corp.l3">Dedicated manager</li></ul>
+            </div>
+            <div class="mock">
+              <div class="mock-head"><span data-i18n="pv.corp.m">Incentive programme</span><span class="sample" data-i18n="pv.sample">Sample</span></div>
+              <ol class="plan">
+                <li><b data-i18n="pv.day1">Day 1</b><span data-i18n="pv.corp.p1">Arrival &amp; welcome dinner</span></li>
+                <li><b data-i18n="pv.day2">Day 2</b><span data-i18n="pv.corp.p2">Conference &amp; workshops</span></li>
+                <li><b data-i18n="pv.day3">Day 3</b><span data-i18n="pv.corp.p3">AlUla excursion</span></li>
+              </ol>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <ul class="perks">
+        <li><svg class="i"><use href="#i-check"/></svg><span data-i18n="hero.p1">Net B2B rates</span></li>
+        <li><svg class="i"><use href="#i-check"/></svg><span data-i18n="hero.p2">Instant vouchers</span></li>
+        <li><svg class="i"><use href="#i-check"/></svg><span data-i18n="hero.p3">Multi-currency wallet</span></li>
+      </ul>
+    </div>
+
+    <!-- ---------- RIGHT: login card ---------- -->
+    <aside class="login-card" id="login" aria-label="Partner sign in">
+      <div class="views" id="views">
+
+        <!-- SIGN IN -->
+        <section class="view is-active" data-view="signin">
+          <div class="card-head">
+            <span class="badge"><svg class="i"><use href="#i-shield"/></svg><span data-i18n="login.badge">Secure partner access</span></span>
+            <h2 data-i18n="login.title">Welcome back</h2>
+            <p data-i18n="login.sub">Sign in to manage bookings, rates and your wallet.</p>
+          </div>
+
+          <div class="seg" id="roleSeg" role="tablist" data-active="0" aria-label="Account type">
+            <span class="seg-thumb" aria-hidden="true"></span>
+            <button type="button" role="tab" aria-selected="true" data-role="agent"><svg class="i"><use href="#i-building"/></svg><span data-i18n="role.agent">Travel Agent</span></button>
+            <button type="button" role="tab" aria-selected="false" data-role="corporate"><svg class="i"><use href="#i-brief"/></svg><span data-i18n="role.corp">Corporate</span></button>
+          </div>
+
+          <form id="loginForm" novalidate>
+            <div class="field" data-field="org">
+              <svg class="i lead-ico"><use href="#i-building"/></svg>
+              <input id="org" name="org" type="text" placeholder=" " autocomplete="organization" autocapitalize="characters" spellcheck="false">
+              <label for="org" id="orgLabel" data-i18n="login.org.agent">Agency code</label>
+              <p class="err" role="alert"></p>
+            </div>
+            <div class="field" data-field="user">
+              <svg class="i lead-ico"><use href="#i-user"/></svg>
+              <input id="user" name="username" type="text" placeholder=" " autocomplete="username" autocapitalize="none" spellcheck="false">
+              <label for="user" data-i18n="login.user">Username or email</label>
+              <p class="err" role="alert"></p>
+            </div>
+            <div class="field" data-field="pass">
+              <svg class="i lead-ico"><use href="#i-lock"/></svg>
+              <input id="pass" name="password" type="password" placeholder=" " autocomplete="current-password">
+              <label for="pass" data-i18n="login.pass">Password</label>
+              <button class="eye" id="togglePass" type="button" aria-pressed="false" aria-label="Show password" data-i18n-aria="login.show">
+                <svg class="i" data-eye><use href="#i-eye"/></svg>
+              </button>
+              <p class="err" role="alert"></p>
+              <p class="caps" id="capsHint" hidden><svg class="i"><use href="#i-alert"/></svg><span data-i18n="login.caps">Caps Lock is on</span></p>
+            </div>
+
+            <div class="row">
+              <label class="check">
+                <input type="checkbox" id="remember">
+                <span class="box"><svg class="i"><use href="#i-check"/></svg></span>
+                <span data-i18n="login.remember">Remember this device</span>
+              </label>
+              <a href="#" class="link" id="forgotLink" data-i18n="login.forgot">Forgot password?</a>
+            </div>
+
+            <p class="form-error" id="formError" role="alert" hidden></p>
+
+            <button class="btn btn-primary btn-block" id="submitBtn" type="submit">
+              <span class="btn-label" data-i18n="login.submit">Sign in securely</span>
+              <svg class="i arrow flip"><use href="#i-arrow"/></svg>
+              <span class="spinner" aria-hidden="true"></span>
+            </button>
+          </form>
+
+          <div class="or"><span data-i18n="login.new">New to the platform?</span></div>
+          <button type="button" class="btn btn-outline btn-block" data-open-register>
+            <svg class="i"><use href="#i-badge"/></svg><span data-i18n="login.register">Register your agency</span>
+          </button>
+        </section>
+
+        <!-- OTP -->
+        <section class="view" data-view="otp">
+          <button type="button" class="back" data-back="signin"><svg class="i flip"><use href="#i-arrow-left"/></svg><span data-i18n="otp.back">Back to sign in</span></button>
+          <div class="card-head">
+            <span class="badge gold"><svg class="i"><use href="#i-mobile"/></svg><span data-i18n="otp.badge">2-step verification</span></span>
+            <h2 data-i18n="otp.title">Verify it’s you</h2>
+            <p><span data-i18n="otp.sent">Enter the 6-digit code we sent to</span> <b id="otpTo" dir="ltr">—</b></p>
+          </div>
+          <form id="otpForm" novalidate>
+            <div class="otp" id="otpBoxes" dir="ltr">
+              <input inputmode="numeric" pattern="[0-9]*" maxlength="1" autocomplete="one-time-code">
+              <input inputmode="numeric" pattern="[0-9]*" maxlength="1" autocomplete="off">
+              <input inputmode="numeric" pattern="[0-9]*" maxlength="1" autocomplete="off">
+              <input inputmode="numeric" pattern="[0-9]*" maxlength="1" autocomplete="off">
+              <input inputmode="numeric" pattern="[0-9]*" maxlength="1" autocomplete="off">
+              <input inputmode="numeric" pattern="[0-9]*" maxlength="1" autocomplete="off">
+            </div>
+            <p class="form-error" id="otpError" role="alert" hidden></p>
+            <button class="btn btn-primary btn-block" id="otpVerify" type="submit">
+              <span class="btn-label" data-i18n="otp.verify">Verify &amp; continue</span>
+              <svg class="i arrow flip"><use href="#i-arrow"/></svg>
+              <span class="spinner" aria-hidden="true"></span>
+            </button>
+            <p class="resend"><span data-i18n="otp.noCode">Didn’t get the code?</span> <button type="button" class="link" id="otpResend" disabled>…</button></p>
+            <p class="demo-note" id="demoNote" data-i18n="otp.demo">Demo mode: any 6-digit code works (000000 is rejected).</p>
+          </form>
+        </section>
+
+        <!-- FORGOT -->
+        <section class="view" data-view="forgot">
+          <button type="button" class="back" data-back="signin"><svg class="i flip"><use href="#i-arrow-left"/></svg><span data-i18n="otp.back">Back to sign in</span></button>
+          <div class="card-head">
+            <span class="badge"><svg class="i"><use href="#i-lock"/></svg><span data-i18n="forgot.badge">Account recovery</span></span>
+            <h2 data-i18n="forgot.title">Reset your password</h2>
+            <p data-i18n="forgot.sub">Enter your username or email and we’ll send you a secure reset link.</p>
+          </div>
+          <form id="forgotForm" novalidate>
+            <div class="field" data-field="fuser">
+              <svg class="i lead-ico"><use href="#i-mail"/></svg>
+              <input id="fuser" type="text" placeholder=" " autocomplete="username" spellcheck="false">
+              <label for="fuser" data-i18n="login.user">Username or email</label>
+              <p class="err" role="alert"></p>
+            </div>
+            <button class="btn btn-primary btn-block" id="forgotBtn" type="submit">
+              <span class="btn-label" data-i18n="forgot.submit">Send reset link</span>
+              <svg class="i arrow"><use href="#i-send"/></svg>
+              <span class="spinner" aria-hidden="true"></span>
+            </button>
+          </form>
+          <div class="notice" id="forgotDone" hidden>
+            <svg class="i"><use href="#i-mail"/></svg>
+            <div><b data-i18n="forgot.done.t">Check your inbox</b><p data-i18n="forgot.done.d">If an account matches, a reset link is on its way. It expires in 30 minutes.</p></div>
+          </div>
+        </section>
+
+        <!-- SUCCESS -->
+        <section class="view" data-view="success">
+          <div class="success">
+            <div class="check-ring"><svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24"/><path d="M15 27l8 8 14-16"/></svg></div>
+            <h2 data-i18n="ok.title">You’re in</h2>
+            <p><span data-i18n="ok.hello">Welcome back,</span> <b id="okName"></b></p>
+            <div class="progress" aria-hidden="true"><i id="okBar"></i></div>
+            <p class="muted" id="okNote" data-i18n="ok.redirect">Preparing your dashboard…</p>
+            <button class="btn btn-outline" id="signOut" type="button" hidden><span data-i18n="ok.signout">Sign out</span></button>
+          </div>
+        </section>
+      </div>
+
+      <footer class="card-foot">
+        <span><svg class="i"><use href="#i-lock"/></svg><span data-i18n="login.secure">256-bit encrypted · 2-step verification</span></span>
+        <a href="#contact" data-i18n="login.help">Need help?</a>
+      </footer>
+    </aside>
+  </div>
+</section>
+
+<!-- ======================= STATS ======================= -->
+<section class="stats" aria-label="At a glance">
+  <!-- PLACEHOLDER figures: replace with your real numbers (data-count drives the count-up). -->
+  <div class="stats-card reveal">
+    <div class="stat"><strong class="num">7</strong><span data-i18n="stat.1">Service lines, one login</span></div>
+    <div class="stat"><strong class="num">24/7</strong><span data-i18n="stat.2">Partner support desk</span></div>
+    <div class="stat"><strong class="num" data-count="3500" data-suffix="+">3,500+</strong><span data-i18n="stat.3">Partner agencies</span></div>
+    <div class="stat"><strong class="num" data-count="900" data-suffix="+">900+</strong><span data-i18n="stat.4">Hotels contracted</span></div>
+  </div>
+</section>
+
+<!-- ======================= SERVICES ======================= -->
+<section class="section" id="services">
+  <div class="container">
+    <header class="section-head reveal">
+      <span class="kicker" data-i18n="sec.svc.k">What we offer</span>
+      <h2 data-i18n="sec.svc.t">Everything your clients need in Saudi Arabia</h2>
+      <p data-i18n="sec.svc.s">One login, one wallet, one operations desk — across the entire travel chain.</p>
+    </header>
+
+    <div class="svc-grid">
+      <article class="svc-card dark s6 reveal" data-svc="visa">
+        <span class="svc-ico"><svg class="i"><use href="#i-visa"/></svg></span>
+        <h3 data-i18n="svc.visa.t">B2B Visas</h3>
+        <p data-i18n="svc.visa.d">Umrah, tourist, business and transit visas with bulk uploads, fast-track processing and live tracking.</p>
+        <ul class="tags"><li data-i18n="tag.umrah">Umrah</li><li data-i18n="tag.tourist">Tourist</li><li data-i18n="tag.business">Business</li><li data-i18n="tag.transit">Transit</li></ul>
+        <a class="svc-link" href="#login" data-focus-login><span data-i18n="svc.cta">Sign in to book</span><svg class="i flip"><use href="#i-arrow"/></svg></a>
+      </article>
+
+      <article class="svc-card s6 reveal" data-svc="hotels" style="--d:80ms">
+        <span class="svc-ico"><svg class="i"><use href="#i-bed"/></svg></span>
+        <h3 data-i18n="svc.hotels.t">Hotels</h3>
+        <p data-i18n="svc.hotels.d">Contracted net rates across Makkah, Madinah, Riyadh, Jeddah and AlUla — from 3★ to five-star luxury.</p>
+        <ul class="tags"><li data-i18n="tag.makkah">Makkah</li><li data-i18n="tag.madinah">Madinah</li><li data-i18n="tag.riyadh">Riyadh</li><li data-i18n="tag.jeddah">Jeddah</li><li data-i18n="tag.alula">AlUla</li></ul>
+        <a class="svc-link" href="#login" data-focus-login><span data-i18n="svc.cta">Sign in to book</span><svg class="i flip"><use href="#i-arrow"/></svg></a>
+      </article>
+
+      <article class="svc-card tint s4 reveal" data-svc="sights">
+        <span class="svc-ico"><svg class="i"><use href="#i-camera"/></svg></span>
+        <h3 data-i18n="svc.sights.t">Sightseeing</h3>
+        <p data-i18n="svc.sights.d">Curated heritage, nature and entertainment experiences with licensed local guides.</p>
+        <ul class="tags"><li data-i18n="tag.diriyah">Diriyah</li><li data-i18n="tag.alula">AlUla</li><li data-i18n="tag.redsea">Red Sea</li></ul>
+        <a class="svc-link" href="#login" data-focus-login><span data-i18n="svc.cta">Sign in to book</span><svg class="i flip"><use href="#i-arrow"/></svg></a>
+      </article>
+
+      <article class="svc-card s4 reveal" data-svc="transfers" style="--d:80ms">
+        <span class="svc-ico"><svg class="i"><use href="#i-plane"/></svg></span>
+        <h3 data-i18n="svc.transfers.t">Airport transfers</h3>
+        <p data-i18n="svc.transfers.d">Meet-and-greet pickups at every major airport with flight tracking and fixed B2B pricing.</p>
+        <ul class="tags"><li>RUH</li><li>JED</li><li>MED</li><li>DMM</li></ul>
+        <a class="svc-link" href="#login" data-focus-login><span data-i18n="svc.cta">Sign in to book</span><svg class="i flip"><use href="#i-arrow"/></svg></a>
+      </article>
+
+      <article class="svc-card tint s4 reveal" data-svc="transport" style="--d:160ms">
+        <span class="svc-ico"><svg class="i"><use href="#i-bus"/></svg></span>
+        <h3 data-i18n="svc.transport.t">Ground transportation</h3>
+        <p data-i18n="svc.transport.d">Inter-city coaches, vans and chauffeured cars with licensed drivers and a modern fleet.</p>
+        <ul class="tags"><li data-i18n="v.coach">Coach</li><li data-i18n="v.van">Van</li><li data-i18n="v.sedan">Sedan</li><li data-i18n="v.gmc">GMC</li></ul>
+        <a class="svc-link" href="#login" data-focus-login><span data-i18n="svc.cta">Sign in to book</span><svg class="i flip"><use href="#i-arrow"/></svg></a>
+      </article>
+
+      <article class="svc-card s6 reveal" data-svc="train">
+        <span class="svc-ico"><svg class="i"><use href="#i-train"/></svg></span>
+        <h3 data-i18n="svc.train.t">Train tickets</h3>
+        <p data-i18n="svc.train.d">Haramain high-speed rail and SAR intercity routes — individual seats or group blocks.</p>
+        <ul class="tags"><li data-i18n="tag.haramain">Haramain</li><li>SAR</li><li data-i18n="tag.groups">Groups</li></ul>
+        <a class="svc-link" href="#login" data-focus-login><span data-i18n="svc.cta">Sign in to book</span><svg class="i flip"><use href="#i-arrow"/></svg></a>
+      </article>
+
+      <article class="svc-card dark s6 reveal" data-svc="corp" style="--d:80ms">
+        <span class="svc-ico"><svg class="i"><use href="#i-brief"/></svg></span>
+        <h3 data-i18n="svc.corp.t">Corporate tours &amp; MICE</h3>
+        <p data-i18n="svc.corp.d">Meetings, incentives, conferences and delegations — designed end-to-end with a dedicated manager, from airport to farewell.</p>
+        <ul class="tags"><li data-i18n="tag.mice">MICE</li><li data-i18n="tag.incentives">Incentives</li><li data-i18n="tag.delegations">Delegations</li></ul>
+        <a class="svc-link" href="#corporate"><span data-i18n="svc.cta2">Plan a group programme</span><svg class="i flip"><use href="#i-arrow"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= HOW IT WORKS ======================= -->
+<section class="section sand" id="how">
+  <div class="container">
+    <header class="section-head reveal">
+      <span class="kicker" data-i18n="how.k">Getting started</span>
+      <h2 data-i18n="how.t">From application to first booking in four steps</h2>
+    </header>
+    <ol class="how">
+      <li class="reveal"><span class="num">1</span><div class="how-ico"><svg class="i"><use href="#i-badge"/></svg></div><h3 data-i18n="how.1.t">Register your agency</h3><p data-i18n="how.1.d">Share your company details and trade licence.</p></li>
+      <li class="reveal" style="--d:100ms"><span class="num">2</span><div class="how-ico"><svg class="i"><use href="#i-shield"/></svg></div><h3 data-i18n="how.2.t">Get verified</h3><p data-i18n="how.2.d">Our team reviews your profile and assigns a dedicated account manager.</p></li>
+      <li class="reveal" style="--d:200ms"><span class="num">3</span><div class="how-ico"><svg class="i"><use href="#i-wallet"/></svg></div><h3 data-i18n="how.3.t">Fund your wallet</h3><p data-i18n="how.3.d">Top up your wallet or request a credit line.</p></li>
+      <li class="reveal" style="--d:300ms"><span class="num">4</span><div class="how-ico"><svg class="i"><use href="#i-send"/></svg></div><h3 data-i18n="how.4.t">Book &amp; grow</h3><p data-i18n="how.4.d">Search live inventory, confirm instantly and download vouchers.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ======================= CORPORATE CTA ======================= -->
+<section class="section cta-wrap" id="corporate">
+  <div class="container">
+    <div class="cta reveal">
+      <div class="cta-geo" aria-hidden="true"></div>
+      <div class="cta-copy">
+        <span class="kicker light" data-i18n="cta.k">Corporate &amp; groups</span>
+        <h2 data-i18n="cta.t">Planning a delegation, conference or incentive trip?</h2>
+        <p data-i18n="cta.d">Tell us about your group and our corporate desk will return with a tailored proposal covering visas, stays, movement and experiences.</p>
+        <div class="cta-actions">
+          <button class="btn btn-gold" type="button" data-open-register data-preset="corporate"><span data-i18n="cta.b1">Request a proposal</span><svg class="i flip"><use href="#i-arrow"/></svg></button>
+          <a class="btn btn-ghost lg" href="tel:+966500000000"><svg class="i"><use href="#i-phone"/></svg><span data-i18n="cta.b2">Call the corporate desk</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="footer" id="contact">
+  <div class="container foot-grid">
+    <div class="foot-brand">
+      <a class="brand" href="#top"><img class="logo" src="assets/img/logo-mark.svg" alt="" width="40" height="40"><span class="brand-text"><b>B2B Stays</b><small data-i18n="brand.tag">Saudi Travel Partners</small></span></a>
+      <p data-i18n="foot.about">Your B2B partner for visas, hotels, experiences and transportation across the Kingdom of Saudi Arabia.</p>
+    </div>
+    <div>
+      <h4 data-i18n="foot.services">Services</h4>
+      <ul>
+        <li><a href="#services" data-i18n="tab.visa">Visas</a></li>
+        <li><a href="#services" data-i18n="tab.hotels">Hotels</a></li>
+        <li><a href="#services" data-i18n="tab.sights">Sightseeing</a></li>
+        <li><a href="#services" data-i18n="tab.transfers">Transfers</a></li>
+        <li><a href="#services" data-i18n="tab.train">Trains</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 data-i18n="foot.company">Company</h4>
+      <ul>
+        <li><a href="#how" data-i18n="nav.how">How it works</a></li>
+        <li><a href="#corporate" data-i18n="nav.corp">Corporate tours</a></li>
+        <li><a href="#" data-open-register data-i18n="nav.register">Become a partner</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 data-i18n="foot.contact">Contact</h4>
+      <!-- PLACEHOLDER contact details: replace with your real ones. -->
+      <ul class="contact">
+        <li><svg class="i"><use href="#i-phone"/></svg><a href="tel:+966500000000" dir="ltr">+966 50 000 0000</a></li>
+        <li><svg class="i"><use href="#i-mail"/></svg><a href="mailto:partners@yourcompany.com" dir="ltr">partners@yourcompany.com</a></li>
+        <li><svg class="i"><use href="#i-pin"/></svg><span data-i18n="foot.addr">Riyadh, Kingdom of Saudi Arabia</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container foot-bar">
+    <span>© <span id="year">2026</span> B2B Stays. <span data-i18n="foot.rights">All rights reserved.</span></span>
+    <span class="legal"><a href="#" data-i18n="foot.terms">Terms</a><a href="#" data-i18n="foot.privacy">Privacy</a></span>
+  </div>
+</footer>
+
+<!-- ======================= REGISTER MODAL ======================= -->
+<dialog class="modal" id="regModal" aria-labelledby="regTitle">
+  <div class="modal-body">
+    <aside class="modal-side">
+      <div class="side-geo" aria-hidden="true"></div>
+      <img class="logo" src="assets/img/logo-mark.svg" alt="" width="44" height="44">
+      <h3 data-i18n="reg.side.t">Grow with a trusted Saudi partner</h3>
+      <ul>
+        <li><svg class="i"><use href="#i-check"/></svg><span data-i18n="reg.b1">Net rates on hotels, transfers and experiences</span></li>
+        <li><svg class="i"><use href="#i-check"/></svg><span data-i18n="reg.b2">Fast-track visa processing</span></li>
+        <li><svg class="i"><use href="#i-check"/></svg><span data-i18n="reg.b3">Dedicated account manager</span></li>
+        <li><svg class="i"><use href="#i-check"/></svg><span data-i18n="reg.b4">Multi-currency wallet &amp; credit options</span></li>
+      </ul>
+    </aside>
+
+    <div class="modal-main">
+      <button class="x" type="button" data-close aria-label="Close" data-i18n-aria="common.close"><svg class="i"><use href="#i-x"/></svg></button>
+
+      <form id="regForm" novalidate>
+        <div class="stepper" id="stepper"><span class="seg-dot is-on"></span><span class="seg-dot"></span><small id="regStepTxt">Step 1 of 2</small></div>
+
+        <div class="reg-step is-active" data-step="1">
+          <h3 id="regTitle" data-i18n="reg.1.t">Tell us about your company</h3>
+          <div class="field" data-field="company">
+            <svg class="i lead-ico"><use href="#i-building"/></svg>
+            <input id="rCompany" name="company" type="text" placeholder=" " autocomplete="organization">
+            <label for="rCompany" data-i18n="reg.company">Company name</label>
+            <p class="err" role="alert"></p>
+          </div>
+
+          <fieldset class="types">
+            <legend data-i18n="reg.type">Business type</legend>
+            <label><input type="radio" name="type" value="agency" checked><span data-i18n="type.agency">Travel agency</span></label>
+            <label><input type="radio" name="type" value="operator"><span data-i18n="type.operator">Tour operator</span></label>
+            <label><input type="radio" name="type" value="corporate"><span data-i18n="type.corp">Corporate</span></label>
+            <label><input type="radio" name="type" value="ota"><span data-i18n="type.ota">OTA / Consolidator</span></label>
+          </fieldset>
+
+          <div class="grid2">
+            <div class="field select" data-field="country">
+              <svg class="i lead-ico"><use href="#i-globe"/></svg>
+              <select id="rCountry" name="country"></select>
+              <label for="rCountry" data-i18n="reg.country">Country</label>
+              <p class="err" role="alert"></p>
+            </div>
+            <div class="field" data-field="city">
+              <svg class="i lead-ico"><use href="#i-pin"/></svg>
+              <input id="rCity" name="city" type="text" placeholder=" " autocomplete="address-level2">
+              <label for="rCity" data-i18n="reg.city">City</label>
+              <p class="err" role="alert"></p>
+            </div>
+          </div>
+
+          <div class="field" data-field="license">
+            <svg class="i lead-ico"><use href="#i-badge"/></svg>
+            <input id="rLicense" name="license" type="text" placeholder=" ">
+            <label for="rLicense" data-i18n="reg.license">Trade licence no. (optional)</label>
+            <p class="err" role="alert"></p>
+          </div>
+
+          <div class="actions"><button class="btn btn-primary" type="button" id="regNext"><span data-i18n="reg.next">Continue</span><svg class="i flip"><use href="#i-arrow"/></svg></button></div>
+        </div>
+
+        <div class="reg-step" data-step="2">
+          <h3 data-i18n="reg.2.t">Who should we contact?</h3>
+          <div class="field" data-field="name">
+            <svg class="i lead-ico"><use href="#i-user"/></svg>
+            <input id="rName" name="name" type="text" placeholder=" " autocomplete="name">
+            <label for="rName" data-i18n="reg.name">Full name</label>
+            <p class="err" role="alert"></p>
+          </div>
+          <div class="grid2">
+            <div class="field" data-field="email">
+              <svg class="i lead-ico"><use href="#i-mail"/></svg>
+              <input id="rEmail" name="email" type="email" placeholder=" " autocomplete="email" spellcheck="false">
+              <label for="rEmail" data-i18n="reg.email">Work email</label>
+              <p class="err" role="alert"></p>
+            </div>
+            <div class="field phone" data-field="phone">
+              <select id="rDial" aria-label="Dial code" dir="ltr">
+                <option value="+966">+966</option><option value="+971">+971</option><option value="+91">+91</option><option value="+92">+92</option>
+                <option value="+880">+880</option><option value="+62">+62</option><option value="+60">+60</option><option value="+20">+20</option>
+                <option value="+90">+90</option><option value="+44">+44</option><option value="+1">+1</option>
+              </select>
+              <input id="rPhone" name="phone" type="tel" placeholder=" " autocomplete="tel-national" dir="ltr">
+              <label for="rPhone" data-i18n="reg.phone">Mobile / WhatsApp</label>
+              <p class="err" role="alert"></p>
+            </div>
+          </div>
+
+          <fieldset class="interest">
+            <legend data-i18n="reg.interest">Services you’re interested in</legend>
+            <div class="chips">
+              <label class="chip"><input type="checkbox" name="interest" value="visa"><span data-i18n="tab.visa">Visas</span></label>
+              <label class="chip"><input type="checkbox" name="interest" value="hotels"><span data-i18n="tab.hotels">Hotels</span></label>
+              <label class="chip"><input type="checkbox" name="interest" value="sights"><span data-i18n="tab.sights">Sightseeing</span></label>
+              <label class="chip"><input type="checkbox" name="interest" value="transfers"><span data-i18n="tab.transfers">Transfers</span></label>
+              <label class="chip"><input type="checkbox" name="interest" value="transport"><span data-i18n="tab.transport">Transport</span></label>
+              <label class="chip"><input type="checkbox" name="interest" value="train"><span data-i18n="tab.train">Trains</span></label>
+              <label class="chip"><input type="checkbox" name="interest" value="corp"><span data-i18n="tab.corp">Corporate tours</span></label>
+            </div>
+          </fieldset>
+
+          <label class="check terms" data-field="terms">
+            <input type="checkbox" id="rTerms" name="terms">
+            <span class="box"><svg class="i"><use href="#i-check"/></svg></span>
+            <span data-i18n="reg.terms">I agree to the Terms and Privacy Policy</span>
+          </label>
+          <p class="err terms-err" id="termsErr" role="alert" hidden></p>
+
+          <div class="actions two">
+            <button class="btn btn-outline" type="button" id="regBack"><svg class="i flip"><use href="#i-arrow-left"/></svg><span data-i18n="reg.back">Back</span></button>
+            <button class="btn btn-primary" type="submit" id="regSubmit"><span class="btn-label" data-i18n="reg.submit">Submit application</span><span class="spinner" aria-hidden="true"></span></button>
+          </div>
+        </div>
+      </form>
+
+      <div class="reg-done" id="regDone" hidden>
+        <div class="check-ring"><svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24"/><path d="M15 27l8 8 14-16"/></svg></div>
+        <h3 data-i18n="reg.done.t">Application received</h3>
+        <p data-i18n="reg.done.d">Thank you — our partnerships team will review your details and contact you shortly.</p>
+        <div class="ref"><small data-i18n="reg.done.ref">Reference</small><b id="regRef">REG-000000</b></div>
+        <button class="btn btn-primary" type="button" data-close><span data-i18n="reg.done.close">Back to home</span></button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<!-- ======================= SUPPORT + TOASTS ======================= -->
+<div class="support">
+  <div class="sup-pop" id="supPop" hidden>
+    <b data-i18n="sup.t">We’re here to help</b>
+    <p data-i18n="sup.d">Our partner desk is available around the clock.</p>
+    <!-- PLACEHOLDER contact details -->
+    <a href="tel:+966500000000"><svg class="i"><use href="#i-phone"/></svg><span data-i18n="sup.call">Call</span><em dir="ltr">+966 50 000 0000</em></a>
+    <a href="https://wa.me/966500000000" target="_blank" rel="noopener"><svg class="i"><use href="#i-chat"/></svg><span>WhatsApp</span><em dir="ltr">+966 50 000 0000</em></a>
+    <a href="mailto:partners@yourcompany.com"><svg class="i"><use href="#i-mail"/></svg><span data-i18n="sup.mail">Email</span><em dir="ltr">partners@yourcompany.com</em></a>
+  </div>
+  <button class="sup-btn" id="supBtn" type="button" aria-expanded="false" aria-controls="supPop" aria-label="Support" data-i18n-aria="sup.aria"><svg class="i"><use href="#i-chat"/></svg></button>
+</div>
+<div class="toasts" id="toasts" aria-live="polite" aria-atomic="false"></div>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>
