@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "b2bstays-static",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "5173", "--directory", "D:/b2bstays"],
+      "port": 5173
+    }
+  ]
+}
