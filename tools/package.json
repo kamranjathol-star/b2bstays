@@ -1,0 +1,12 @@
+{
+  "name": "b2bstays-tools",
+  "private": true,
+  "type": "module",
+  "description": "Developer tooling only - never deployed (see .vercelignore).",
+  "scripts": {
+    "photos": "node optimize-images.mjs"
+  },
+  "dependencies": {
+    "sharp": "^0.35.5"
+  }
+}

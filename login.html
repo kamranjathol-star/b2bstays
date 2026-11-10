@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="login.meta.title">Agent login — B2B Stays</title>
+  <!-- The login page must not appear in search results. -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#04201b">
+  <link rel="icon" href="assets/img/logo-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="page-login">
+<a class="skip" href="#main" data-i18n="skip.main">Skip to content</a>
+<header class="topbar" id="topbar"></header>
+
+<main id="top">
+  <section class="login-wrap">
+    <div class="hero-bg" data-hero-bg aria-hidden="true"></div>
+    <div class="login-inner" id="main" tabindex="-1">
+      <!--
+        WHEN THE PORTAL EXISTS: replace this block with the real sign-in form (or set
+        SITE.portal.loginUrl in assets/js/site-config.js to redirect "Agent login" links
+        to your portal). Until then this page only explains the situation.
+      -->
+      <aside class="access-card" aria-labelledby="loginTitle">
+        <div class="soon">
+          <div class="soon-ico"><svg class="i"><use href="#i-lock"/></svg></div>
+          <span class="badge gold" data-i18n="soon.badge">Opening soon</span>
+          <h1 id="loginTitle" data-i18n="soon.title">Portal opening soon</h1>
+          <p data-i18n="soon.d">The partner portal isn’t live yet, so there’s nothing to sign in to. Request access and we’ll contact you when your account is ready.</p>
+          <a class="btn btn-primary btn-block" href="index.html#request" data-request><span data-i18n="soon.cta">Request access</span><svg class="i arrow flip"><use href="#i-arrow"/></svg></a>
+        </div>
+        <footer class="card-foot">
+          <span><svg class="i"><use href="#i-lock"/></svg><span data-i18n="card.foot">We reply using the details you give.</span></span>
+          <a href="index.html" data-i18n="login.home">Back to home</a>
+        </footer>
+      </aside>
+      <p class="login-note" data-i18n="hero.note">We work with the travel trade only. We don’t sell to the public.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" id="siteFooter"></footer>
+<div id="floaters"></div>
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+<script defer src="assets/js/site-config.js"></script>
+<script defer src="assets/js/i18n.js"></script>
+<script defer src="assets/js/art.js"></script>
+<script defer src="assets/js/chrome.js"></script>
+</body>
+</html>
