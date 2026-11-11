@@ -18,7 +18,8 @@
        hero.jpg                     -> hero (full-bleed background)
        svc-hotels.jpg               -> service card photo   (hotels | visa | transfers |
        svc-visa.jpg ...                                      transport | ziyarat | train | corp)
-       city-makkah.jpg              -> city card photo      (makkah | madinah | jeddah | riyadh)
+       city-dubai.jpg               -> destination tile     (city-<any-name>, e.g. city-paris)
+       hotel-pool.jpg               -> premium-hotel tile   (hotel-<any-name>)
 
    Only use photos you own or have licensed. Keep the licence / credit text
    to put in the "credit" field.
@@ -45,14 +46,15 @@ const FORMATS = [
 const MIN_QUALITY = 30;
 
 const SVC = ['hotels', 'visa', 'transfers', 'transport', 'ziyarat', 'train', 'corp'];
-const CITY = ['makkah', 'madinah', 'jeddah', 'riyadh'];
 
 function configPath(name) {
   if (name === 'hero') return 'hero';
   let m = /^svc-(.+)$/.exec(name);
   if (m && SVC.includes(m[1])) return `services.${m[1]}`;
-  m = /^city-(.+)$/.exec(name);
-  if (m && CITY.includes(m[1])) return `destinations.${m[1]}`;
+  m = /^city-([a-z0-9-]+)$/.exec(name);
+  if (m) return `destinations.${m[1].replace(/-/g, '')}`;
+  m = /^hotel-([a-z0-9-]+)$/.exec(name);
+  if (m) return `hotels.${m[1].replace(/-/g, '')}`;
   return null;
 }
 const kb = n => (n / 1024).toFixed(0).padStart(4) + ' KB';
@@ -71,7 +73,7 @@ async function main() {
     const name = path.parse(file).name.toLowerCase();
     const cfgPath = configPath(name);
     const profile = name === 'hero' ? PROFILES.hero : PROFILES.card;
-    if (!cfgPath) { console.warn(`! Skipping "${file}": name must be hero, svc-<service> or city-<city>.`); problems++; continue; }
+    if (!cfgPath) { console.warn(`! Skipping "${file}": name must be hero, svc-<service>, city-<name> or hotel-<name>.`); problems++; continue; }
 
     const { data, info } = await sharp(path.join(SRC, file)).rotate().toBuffer({ resolveWithObject: true });
     let widths = profile.widths.filter(w => w <= info.width);

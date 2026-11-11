@@ -45,7 +45,11 @@
     '<symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></symbol>' +
     '<symbol id="i-badge" viewBox="0 0 24 24"><path d="M12 2l2.4 2.1 3.2-.2.9 3.1 2.7 1.8-1 3.1 1 3.1-2.7 1.8-.9 3.1-3.2-.2L12 22l-2.4-2.1-3.2.2-.9-3.1L2.8 15l1-3.1-1-3.1 2.7-1.8.9-3.1 3.2.2z"/><path d="m9 12 2 2 4-4"/></symbol>' +
     '<symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>' +
-    '<symbol id="i-send" viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></symbol>';
+    '<symbol id="i-send" viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></symbol>' +
+    '<symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>' +
+    '<symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></symbol>' +
+    '<symbol id="i-wallet" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="15" rx="3"/><path d="M2 10h20M16 15h2"/></symbol>' +
+    '<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol>';
 
   function renderSprite() {
     document.body.insertAdjacentHTML('afterbegin',
@@ -69,6 +73,12 @@
   /* ---------------- header ---------------- */
   function headerHTML() {
     var login = loginUrl || 'login.html';
+    var here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    function nav(href, key, label) {
+      var file = href.split('#')[0];
+      var cur = file === here && href.indexOf('#') < 0 ? ' aria-current="page"' : '';
+      return '<a href="' + href + '"' + cur + ' data-i18n="' + key + '">' + label + '</a>';
+    }
     return '' +
 '<div class="wrap">' +
   '<a class="brand" href="index.html#top" aria-label="' + esc(NAME) + '">' +
@@ -76,11 +86,11 @@
     '<span class="brand-text"><b>' + esc(NAME) + '</b><small data-i18n="brand.tag">For the travel trade</small></span>' +
   '</a>' +
   '<nav class="nav" id="siteNav" aria-label="Primary">' +
-    '<a href="index.html#services" data-i18n="nav.services">Services</a>' +
-    '<a href="index.html#how" data-i18n="nav.how">How it works</a>' +
-    '<a href="index.html#destinations" data-i18n="nav.destinations">Destinations</a>' +
-    '<a href="index.html#faq" data-i18n="nav.faq">FAQ</a>' +
-    '<a href="index.html#support" data-i18n="nav.support">Support</a>' +
+    nav('services.html', 'nav.services', 'Services') +
+    nav('how-it-works.html', 'nav.how', 'How it works') +
+    nav('index.html#destinations', 'nav.destinations', 'Destinations') +
+    nav('faq.html', 'nav.faq', 'FAQ') +
+    nav('support.html', 'nav.support', 'Support') +
     '<div class="nav-actions">' +
       '<a class="btn btn-gold" href="index.html#request" data-request><span data-i18n="nav.request">Request access</span><svg class="i flip"><use href="#i-arrow"/></svg></a>' +
       '<a class="btn btn-ghost" href="' + esc(login) + '" data-agent-login><svg class="i"><use href="#i-lock"/></svg><span data-i18n="nav.login">Agent login</span></a>' +
@@ -100,47 +110,59 @@
   }
 
   /* ---------------- footer ---------------- */
+  /* Contact tiles and registered details appear ONLY when filled in (site-config.js). */
+  function tile(icon, key, label, href, value, external) {
+    return '<a class="foot-tile" href="' + esc(href) + '"' + (external ? ' target="_blank" rel="noopener"' : '') + '>' +
+      '<span class="ti"><svg class="i"><use href="#i-' + icon + '"/></svg></span>' +
+      '<span class="tt"><small data-i18n="' + key + '">' + esc(label) + '</small><b dir="ltr">' + esc(value) + '</b></span></a>';
+  }
   function footerHTML() {
     var lines = legalLines();
-    var contact = [];
-    if (C.email) contact.push('<li><svg class="i"><use href="#i-mail"/></svg><a href="mailto:' + esc(C.email) + '" dir="ltr">' + esc(C.email) + '</a></li>');
-    if (C.phone) contact.push('<li><svg class="i"><use href="#i-phone"/></svg><a href="tel:' + esc(digits(C.phone) ? '+' + digits(C.phone) : C.phone) + '" dir="ltr">' + esc(C.phone) + '</a></li>');
-    if (digits(C.whatsapp)) contact.push('<li><svg class="i"><use href="#i-chat"/></svg><a href="https://wa.me/' + digits(C.whatsapp) + '" target="_blank" rel="noopener"><span data-i18n="wa.label">WhatsApp</span></a></li>');
+    var tiles = [];
+    if (digits(C.whatsapp)) tiles.push(tile('chat', 'foot.t.wa', 'WhatsApp us', 'https://wa.me/' + digits(C.whatsapp), '+' + digits(C.whatsapp), true));
+    if (C.email) tiles.push(tile('mail', 'foot.t.email', 'Email us', 'mailto:' + C.email, C.email));
+    if (C.phone) tiles.push(tile('phone', 'foot.t.phone', 'Call us', 'tel:' + (digits(C.phone) ? '+' + digits(C.phone) : C.phone), C.phone));
 
-    var col4 = '';
-    if (contact.length) col4 += '<h4 data-i18n="foot.contact">Contact</h4><ul class="contact">' + contact.join('') + '</ul>';
-    if (lines.length) {
-      col4 += '<div class="legal-box" style="margin-top:' + (contact.length ? '22px' : '0') + '"><h4 data-i18n="foot.reg">Registered details</h4><dl>' +
-        lines.map(function (l) { return '<div><dt' + (l[0] ? ' data-i18n="' + l[0] + '"' : '') + '>' + esc(l[1]) + '</dt><dd>' + esc(l[2]) + '</dd></div>'; }).join('') + '</dl></div>';
-    }
+    var touch = tiles.length
+      ? '<div class="foot-touch"><div class="container"><h3 data-i18n="foot.touch">Get in touch</h3><div class="foot-tiles">' + tiles.join('') + '</div></div></div>'
+      : '';
 
-    return '' +
+    var reg = lines.length
+      ? '<div class="container foot-reg"><h4 data-i18n="foot.reg">Registered details</h4><dl>' +
+        lines.map(function (l) { return '<div><dt' + (l[0] ? ' data-i18n="' + l[0] + '"' : '') + '>' + esc(l[1]) + '</dt><dd>' + esc(l[2]) + '</dd></div>'; }).join('') +
+        '</dl></div>'
+      : '';
+
+    return touch +
 '<div class="container foot-grid">' +
   '<div class="foot-brand">' +
     '<a class="brand" href="index.html#top"><img class="logo" src="assets/img/logo-mark.svg" alt="" width="40" height="40"><span class="brand-text"><b>' + esc(NAME) + '</b><small data-i18n="brand.tag">For the travel trade</small></span></a>' +
-    '<p data-i18n="foot.about">Saudi Arabia travel services for registered travel agents and companies.</p>' +
+    '<p data-i18n="foot.about">Hotels and travel services for registered travel agents and companies.</p>' +
   '</div>' +
   '<div><h4 data-i18n="foot.services">Services</h4><ul>' +
-    '<li><a href="index.html#services" data-i18n="svc.hotels.s">Hotels</a></li>' +
-    '<li><a href="index.html#services" data-i18n="svc.visa.s">Visa services</a></li>' +
-    '<li><a href="index.html#services" data-i18n="svc.transfers.s">Transfers</a></li>' +
-    '<li><a href="index.html#services" data-i18n="svc.transport.s">Transportation</a></li>' +
-    '<li><a href="index.html#services" data-i18n="svc.ziyarat.s">Ziyarat &amp; sightseeing</a></li>' +
-    '<li><a href="index.html#services" data-i18n="svc.train.s">Haramain train</a></li>' +
-    '<li><a href="index.html#services" data-i18n="svc.corp.s">Corporate tours</a></li>' +
+    '<li><a href="services.html#hotels" data-i18n="svc.hotels.s">Hotels</a></li>' +
+    '<li><a href="services.html#visa" data-i18n="svc.visa.s">Visa services</a></li>' +
+    '<li><a href="services.html#transfers" data-i18n="svc.transfers.s">Transfers</a></li>' +
+    '<li><a href="services.html#transport" data-i18n="svc.transport.s">Transportation</a></li>' +
+    '<li><a href="services.html#ziyarat" data-i18n="svc.ziyarat.s">Ziyarat &amp; sightseeing</a></li>' +
+    '<li><a href="services.html#train" data-i18n="svc.train.s">Haramain train</a></li>' +
+    '<li><a href="services.html#corp" data-i18n="svc.corp.s">Corporate tours</a></li>' +
   '</ul></div>' +
   '<div><h4 data-i18n="foot.company">Company</h4><ul>' +
-    '<li><a href="index.html#how" data-i18n="nav.how">How it works</a></li>' +
-    '<li><a href="index.html#faq" data-i18n="nav.faq">FAQ</a></li>' +
+    '<li><a href="how-it-works.html" data-i18n="nav.how">How it works</a></li>' +
+    '<li><a href="how-it-works.html#portal" data-i18n="foot.portal">Portal preview</a></li>' +
+    '<li><a href="faq.html" data-i18n="nav.faq">FAQ</a></li>' +
+    '<li><a href="support.html" data-i18n="nav.support">Support</a></li>' +
     '<li><a href="index.html#request" data-request data-i18n="nav.request">Request access</a></li>' +
     '<li><a href="' + esc(loginUrl || 'login.html') + '" data-agent-login data-i18n="nav.login">Agent login</a></li>' +
-  '</ul><h4 style="margin-top:22px" data-i18n="foot.legal">Legal</h4><ul>' +
+  '</ul></div>' +
+  '<div><h4 data-i18n="foot.legal">Legal</h4><ul>' +
     '<li><a href="privacy.html" data-i18n="legal.privacy">Privacy Policy</a></li>' +
     '<li><a href="terms.html" data-i18n="legal.terms">Terms of use</a></li>' +
     '<li><a href="cookies.html" data-i18n="legal.cookies">Cookie Policy</a></li>' +
   '</ul></div>' +
-  (col4 ? '<div>' + col4 + '</div>' : '') +
 '</div>' +
+reg +
 '<div class="container foot-bar"><span>© <span id="year">' + new Date().getFullYear() + '</span> ' + esc(NAME) + '. <span data-i18n="foot.rights">All rights reserved.</span></span></div>';
   }
 
@@ -171,7 +193,7 @@
   function wireHeader() {
     var bar = $('#topbar'), btn = $('#menuBtn'), nav = $('#siteNav');
 
-    function onScroll() { bar.classList.toggle('is-solid', window.scrollY > 10 || document.body.classList.contains('page-legal')); }
+    function onScroll() { bar.classList.toggle('is-solid', window.scrollY > 10 || document.body.classList.contains('page-legal') || document.body.classList.contains('page-sub')); }
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
@@ -212,8 +234,25 @@
   function wireHeroBg() {
     var bg = $('[data-hero-bg]');
     if (!bg || !B2B.art) return;
-    bg.innerHTML = B2B.art.heroBg();
     var host = bg.parentElement;
+    bg.innerHTML = B2B.art.heroBg();
+
+    // Photo hero: a full-bleed photo under a dark-green gradient (card stays on top).
+    // The illustration above is the fallback when no photo is configured or it fails to load.
+    var entry = SITE.images && SITE.images.hero;
+    if (B2B.photos && B2B.photos.valid(entry)) {
+      var ph = document.createElement('div'); ph.className = 'hero-photo';
+      var shade = document.createElement('div'); shade.className = 'hero-shade';
+      bg.insertBefore(shade, bg.firstChild);
+      bg.insertBefore(ph, bg.firstChild);
+      host.classList.add('has-photo');
+      var credit = null;
+      if (entry.credit) { credit = document.createElement('span'); credit.className = 'photo-credit'; credit.textContent = entry.credit; bg.appendChild(credit); }
+      B2B.photos.mount(ph, entry, {
+        eager: true, sizes: '100vw',
+        onFail: function () { host.classList.remove('has-photo'); ph.remove(); shade.remove(); if (credit) credit.remove(); }
+      });
+    }
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !window.matchMedia('(hover:hover)').matches) return;
     var raf = 0;
     host.addEventListener('pointermove', function (e) {

@@ -1,6 +1,6 @@
 /* =====================================================================
-   Home page behaviour: access card (request form + login state), support
-   hours, destination art, scroll effects.
+   Home page behaviour: the access card (request form + agent-login state).
+   Support hours, photo tiles and scroll effects live in pages.js.
    ===================================================================== */
 (function () {
   'use strict';
@@ -272,117 +272,9 @@
     });
   });
 
-  /* =============================================================
-     3. SUPPORT HOURS (defined in KSA time, shown in KSA + UK time)
-     ============================================================= */
-  function tzParts(date, tz) {
-    var p = {};
-    new Intl.DateTimeFormat('en-US', { timeZone: tz, hourCycle: 'h23', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', weekday: 'short' })
-      .formatToParts(date).forEach(function (x) { p[x.type] = x.value; });
-    return p;
-  }
-  function tzOffsetMin(date, tz) {
-    var p = tzParts(date, tz);
-    var asUTC = Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour, +p.minute, +p.second);
-    return Math.round((asUTC - Math.floor(date.getTime() / 1000) * 1000) / 60000);
-  }
-  function zonedToUtc(y, m, d, h, mi, tz) {
-    var guess = Date.UTC(y, m - 1, d, h, mi);
-    return new Date(guess - tzOffsetMin(new Date(guess), tz) * 60000);
-  }
-  function toMin(hhmm) { var a = hhmm.split(':'); return (+a[0]) * 60 + (+a[1]); }
-  function fmtHM(date, tz) { return new Intl.DateTimeFormat('en-GB', { timeZone: tz, hour: '2-digit', minute: '2-digit', hour12: false }).format(date); }
-
-  function dayLabel(days, lang) {
-    var loc = lang === 'ar' ? 'ar' : 'en-GB';
-    var style = lang === 'ar' ? 'long' : 'short';
-    var f = new Intl.DateTimeFormat(loc, { weekday: style, timeZone: 'UTC' });
-    function name(i) { return f.format(new Date(Date.UTC(2024, 0, 7 + i))); }   // 7 Jan 2024 was a Sunday
-    var d = days.slice().sort(function (a, b) { return a - b; });
-    var contiguous = d.length >= 3 && d.every(function (v, i) { return i === 0 || v === d[i - 1] + 1; });
-    return contiguous ? name(d[0]) + ' – ' + name(d[d.length - 1]) : d.map(name).join(', ');
-  }
-
-  function renderHours() {
-    var s = SITE.support || {};
-    var box = $('#hoursBox');
-    var okTime = /^\d{1,2}:\d{2}$/;
-    if (!s.days || !s.days.length || !okTime.test(s.open || '') || !okTime.test(s.close || '')) { box.hidden = true; return; }
-    var tz = s.timezone || 'Asia/Riyadh';
-    var lang = B2B.i18n.getLang();
-    var now = new Date();
-    var np = tzParts(now, tz);
-    var openM = toMin(s.open), closeM = toMin(s.close);
-    var wd = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 }[np.weekday];
-    var nowM = (+np.hour) * 60 + (+np.minute);
-    var isOpen = s.days.indexOf(wd) > -1 && nowM >= openM && nowM < closeM;
-    var openUtc = zonedToUtc(+np.year, +np.month, +np.day, Math.floor(openM / 60), openM % 60, tz);
-    var closeUtc = zonedToUtc(+np.year, +np.month, +np.day, Math.floor(closeM / 60), closeM % 60, tz);
-    var abbr = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', timeZoneName: 'short' }).formatToParts(openUtc)
-      .filter(function (p) { return p.type === 'timeZoneName'; })[0];
-    // Some browsers return "GMT+0" / "GMT+1" for London instead of "GMT" / "BST".
-    var ukLabel = abbr ? ({ 'GMT+0': 'GMT', 'GMT+1': 'BST' }[abbr.value] || abbr.value) : '';
-    var C = SITE.contact || {};
-
-    var actions = [];
-    if (C.email) actions.push('<a class="btn btn-outline" href="mailto:' + esc(C.email) + '"><svg class="i"><use href="#i-mail"/></svg><span>' + esc(t('hours.email')) + '</span></a>');
-    if (C.phone) actions.push('<a class="btn btn-outline" href="tel:+' + digits(C.phone) + '"><svg class="i"><use href="#i-phone"/></svg><span>' + esc(t('hours.phone')) + '</span></a>');
-    if (digits(C.whatsapp)) actions.push('<a class="btn btn-outline" href="https://wa.me/' + digits(C.whatsapp) + '" target="_blank" rel="noopener"><svg class="i"><use href="#i-chat"/></svg><span>' + esc(t('hours.wa')) + '</span></a>');
-
-    box.innerHTML =
-      '<div class="hours-head"><span class="pill ' + (isOpen ? 'open' : 'closed') + '"><i></i>' + esc(t(isOpen ? 'hours.open' : 'hours.closed')) + '</span>' +
-      '<span class="hours-days">' + esc(dayLabel(s.days, lang)) + '</span></div>' +
-      '<dl class="hours-list">' +
-        '<div><dt><svg class="i"><use href="#i-pin"/></svg>' + esc(t('hours.ksa')) + '</dt><dd>' + fmtHM(openUtc, tz) + ' – ' + fmtHM(closeUtc, tz) + '</dd></div>' +
-        '<div><dt><svg class="i"><use href="#i-clock"/></svg>' + esc(t('hours.uk')) + '</dt><dd>' + fmtHM(openUtc, 'Europe/London') + ' – ' + fmtHM(closeUtc, 'Europe/London') + (ukLabel ? ' <small>' + ukLabel + '</small>' : '') + '</dd></div>' +
-      '</dl>' +
-      '<p class="hours-note">' + esc(t('hours.note')) + '</p>' +
-      (actions.length ? '<div class="hours-actions">' + actions.join('') + '</div>' : '');
-    box.hidden = false;
-  }
 
   /* =============================================================
-     4. DESTINATIONS — own artwork, or your own/licensed photo from config
-     ============================================================= */
-  function renderDestinations() {
-    $$('.dest').forEach(function (el) {
-      var key = el.getAttribute('data-dest');
-      var host = $('[data-art]', el);
-      var cfg = (SITE.destinations || {})[key] || {};
-      if (cfg.photo) {
-        var name = el.querySelector('h3').textContent;
-        host.innerHTML = '<img src="' + esc(cfg.photo) + '" alt="' + esc(cfg.alt || name) + '" loading="lazy" decoding="async">';
-        if (cfg.credit) el.insertAdjacentHTML('beforeend', '<span class="dest-credit">' + esc(cfg.credit) + '</span>');
-      } else if (B2B.art && B2B.art.dest[key]) {
-        host.innerHTML = B2B.art.dest[key];
-      }
-    });
-  }
-
-  /* =============================================================
-     5. SCROLL REVEAL + CARD SPOTLIGHT
-     ============================================================= */
-  function initReveal() {
-    var items = $$('.reveal');
-    if (!('IntersectionObserver' in window) || reduce) { items.forEach(function (n) { n.classList.add('in'); }); return; }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
-    items.forEach(function (n) { io.observe(n); });
-  }
-  function initSpotlight() {
-    if (!window.matchMedia('(hover:hover)').matches) return;
-    $$('.svc-card').forEach(function (c) {
-      c.addEventListener('pointermove', function (e) {
-        var r = c.getBoundingClientRect();
-        c.style.setProperty('--x', (e.clientX - r.left) + 'px');
-        c.style.setProperty('--y', (e.clientY - r.top) + 'px');
-      });
-    });
-  }
-
-  /* =============================================================
-     6. LANGUAGE CHANGES + START-UP
+     4. LANGUAGE CHANGES + START-UP
      ============================================================= */
   B2B.i18n.onChange(function () {
     buildCountries();
@@ -390,12 +282,7 @@
     $$('.err[data-key]').forEach(function (e) { e.textContent = t(e.getAttribute('data-key')); });
     if (!formError.hidden) formError.textContent = t('err.send');
     renderOutcome();
-    renderHours();
   });
 
-  renderDestinations();
-  initReveal();
-  initSpotlight();
-  setInterval(renderHours, 60000);
   if (location.hash === '#request') setTimeout(pingCard, 600);
 })();
