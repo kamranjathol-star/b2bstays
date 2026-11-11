@@ -68,6 +68,7 @@
         });
         var data = {};
         try { data = await res.json(); } catch (e) { /* empty body is fine */ }
+        if (res.status === 503 && data && data.error === 'not_configured') return { status: 'not-configured' };   // backend deployed but not set up yet
         if (!res.ok) {
           var err = new Error('request-failed');
           err.status = res.status;

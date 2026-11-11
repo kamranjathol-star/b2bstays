@@ -82,7 +82,7 @@
     return '' +
 '<div class="wrap">' +
   '<a class="brand" href="index.html#top" aria-label="' + esc(NAME) + '">' +
-    '<img class="logo" src="assets/img/logo-mark.svg" alt="" width="40" height="40">' +
+    '<img class="logo" src="assets/img/logo-mark-96.png" alt="" width="40" height="40">' +
     '<span class="brand-text"><b>' + esc(NAME) + '</b><small data-i18n="brand.tag">For the travel trade</small></span>' +
   '</a>' +
   '<nav class="nav" id="siteNav" aria-label="Primary">' +
@@ -136,7 +136,7 @@
     return touch +
 '<div class="container foot-grid">' +
   '<div class="foot-brand">' +
-    '<a class="brand" href="index.html#top"><img class="logo" src="assets/img/logo-mark.svg" alt="" width="40" height="40"><span class="brand-text"><b>' + esc(NAME) + '</b><small data-i18n="brand.tag">For the travel trade</small></span></a>' +
+    '<a class="foot-logo" href="index.html#top"><img src="assets/img/logo-full-480.png" srcset="assets/img/logo-full-480.png 1x, assets/img/logo-full-960.png 2x" width="168" height="145" alt="' + esc(NAME) + ' — corporate accommodation" loading="lazy" decoding="async"></a>' +
     '<p data-i18n="foot.about">Hotels and travel services for registered travel agents and companies.</p>' +
   '</div>' +
   '<div><h4 data-i18n="foot.services">Services</h4><ul>' +

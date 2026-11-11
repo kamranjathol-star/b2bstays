@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin — B2B Stays</title>
+  <!-- The admin area must never appear in search results. -->
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="theme-color" content="#04201b">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" href="assets/img/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body class="page-admin">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="adm-bar">
+  <a class="adm-brand" href="index.html" aria-label="B2B Stays — public website">
+    <img src="assets/img/logo-mark-96.png" alt="" width="40" height="40">
+    <span><b>B2B Stays</b><small>Admin</small></span>
+  </a>
+  <div class="adm-user" id="admUser" hidden>
+    <span class="adm-email" id="admEmail"></span>
+    <button class="btn btn-outline sm" type="button" id="btnSignOut">Sign out</button>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+
+  <!-- ===== loading ===== -->
+  <p class="adm-loading" id="viewLoading" role="status">Checking your session…</p>
+
+  <!-- ===== sign-in ===== -->
+  <section class="adm-login" id="viewLogin" hidden aria-labelledby="loginTitle">
+    <form class="adm-card" id="loginForm" novalidate>
+      <img class="adm-logo" src="assets/img/logo-full-480.png" srcset="assets/img/logo-full-480.png 1x, assets/img/logo-full-960.png 2x" width="168" height="145" alt="B2B Stays — corporate accommodation">
+      <h1 id="loginTitle" tabindex="-1">Admin sign-in</h1>
+      <p class="adm-sub">For the B2B Stays team. Travel agents: please use the request form on the <a href="index.html#request">home page</a>.</p>
+      <p class="adm-msg" id="loginMsg" role="alert" hidden></p>
+      <label class="adm-field"><span>Email</span>
+        <input id="loginEmail" name="email" type="email" autocomplete="username" inputmode="email" spellcheck="false" required>
+      </label>
+      <label class="adm-field"><span>Password</span>
+        <input id="loginPassword" name="password" type="password" autocomplete="current-password" required>
+      </label>
+      <button class="btn btn-primary btn-block" type="submit" id="loginBtn"><span class="btn-label">Sign in</span><span class="spinner" aria-hidden="true"></span></button>
+    </form>
+  </section>
+
+  <!-- ===== requests ===== -->
+  <section class="adm-app" id="viewApp" hidden aria-labelledby="appTitle">
+    <div class="adm-banners" id="admBanners"></div>
+
+    <div class="adm-head">
+      <div>
+        <h1 id="appTitle" tabindex="-1">Access requests</h1>
+        <p class="adm-sub" id="admCount" aria-live="polite"></p>
+      </div>
+      <div class="adm-actions">
+        <button class="btn btn-outline sm" type="button" id="btnRefresh">Refresh</button>
+        <a class="btn btn-outline sm" id="btnCsv" href="/api/admin/requests?format=csv" download>Export CSV</a>
+      </div>
+    </div>
+
+    <div class="adm-stats" id="admStats" role="group" aria-label="Filter by status"></div>
+
+    <div class="adm-search">
+      <label for="admSearch">Search requests</label>
+      <input id="admSearch" type="search" placeholder="Company, name, email, country, reference…" autocomplete="off">
+    </div>
+
+    <ul class="adm-rows" id="admRows"></ul>
+    <p class="adm-empty" id="admEmpty" hidden></p>
+  </section>
+</main>
+
+<!-- ===== one request ===== -->
+<dialog class="adm-dialog" id="detail" aria-labelledby="detTitle">
+  <div class="det-head">
+    <div>
+      <small id="detRef"></small>
+      <h2 id="detTitle"></h2>
+      <p class="det-when" id="detWhen"></p>
+    </div>
+    <button class="btn btn-outline sm" type="button" id="detClose">Close</button>
+  </div>
+
+  <dl class="det-grid" id="detGrid"></dl>
+
+  <div class="det-contact" id="detContact"></div>
+
+  <fieldset class="det-status">
+    <legend>Status</legend>
+    <div class="det-status-opts" id="detStatus"></div>
+  </fieldset>
+
+  <section class="det-notes" aria-labelledby="notesTitle">
+    <h3 id="notesTitle">Notes</h3>
+    <ul id="detNotes"></ul>
+    <label class="adm-field"><span>Add a note</span>
+      <textarea id="detNote" rows="3" maxlength="1000" placeholder="e.g. Called on WhatsApp, sent price list"></textarea>
+    </label>
+    <button class="btn btn-primary sm" type="button" id="detAddNote">Add note</button>
+  </section>
+
+  <details class="det-more">
+    <summary>Consent and history</summary>
+    <div id="detMore"></div>
+  </details>
+
+  <div class="det-danger">
+    <button class="btn btn-danger sm" type="button" id="detDelete">Delete permanently</button>
+    <p>Removes this request and its notes for good. Use it when someone asks us to erase their data.</p>
+  </div>
+</dialog>
+
+<div class="adm-toast" id="admToast" role="status" aria-live="polite" hidden></div>
+
+<script src="assets/js/admin.js"></script>
+</body>
+</html>

@@ -21,7 +21,7 @@
     /* portal preview */
     'portal.k': 'اطّلع على البوابة',
     'portal.t': 'نظرة أولى على بوابة الشركاء',
-    'portal.d': 'معاينة للتصميم المخطَّط، تُعرض ببيانات تجريبية. البوابة غير متاحة بعد، وقد تختلف الشاشات النهائية.',
+    'portal.d': 'معاينة لبوابة الشركاء المخطَّطة، تُعرض ببيانات تجريبية. قد تختلف الشاشات النهائية.',
     'portal.b1': 'لوحة تحكم للحجوزات وطلبات التأشيرات والمحفظة',
     'portal.b2': 'قسائم فنادق برمز QR',
     'portal.badge': 'معاينة · بيانات تجريبية',
@@ -72,13 +72,17 @@
     'foot.t.email': 'راسلنا بالبريد الإلكتروني',
     'foot.t.phone': 'اتصل بنا',
 
-    /* photo credits line (rendered by pages.js) */
-    'credits.photos': 'الصور'
+    /* photo credits line + "trading for N years" chip (rendered by pages.js) */
+    'credits.photos': 'الصور',
+    'hero.years': 'نعمل منذ {n} {u}',
+    'hero.years.plus': 'نعمل منذ أكثر من {n} {u}'
   };
 
   // English for strings that JavaScript renders (everything else is read from the HTML).
   var EN = {
     'credits.photos': 'Photos',
+    'hero.years': 'Trading for {n} {u}',
+    'hero.years.plus': 'Trading for {n}+ {u}',
     'proof.years': 'Years trading',
     'proof.cities': 'Cities',
     'proof.hotels': 'Hotels'

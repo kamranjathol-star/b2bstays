@@ -6,7 +6,19 @@
   <title data-i18n="meta.title">B2B Stays — Hotels and travel services for the trade</title>
   <meta name="description" data-i18n-content="meta.desc" content="B2B only. Hotels worldwide, plus visa services, airport and intercity transfers, transportation, sightseeing, train tickets and corporate tours, for registered travel agents and companies.">
   <meta name="theme-color" content="#04201b">
-  <link rel="icon" href="assets/img/logo-mark.svg" type="image/svg+xml">
+  <!-- Link previews (WhatsApp, LinkedIn, Slack, …) show the logo. Crawlers do not run JavaScript, so this is English. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="B2B Stays">
+  <meta property="og:url" content="https://b2bstays.com/">
+  <meta property="og:title" content="B2B Stays — Hotels and travel services for the trade">
+  <meta property="og:description" content="B2B only. Hotels worldwide, plus visa services, transfers, transportation, sightseeing, train tickets and corporate tours, for registered travel agents and companies.">
+  <meta property="og:image" content="https://b2bstays.com/assets/img/logo-full-960.png">
+  <meta property="og:image:width" content="960">
+  <meta property="og:image:height" content="830">
+  <meta property="og:image:alt" content="B2B Stays logo — corporate accommodation">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" href="assets/img/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="stylesheet" href="assets/fonts/fonts.css">
   <link rel="stylesheet" href="assets/css/styles.css">
   <script>document.documentElement.classList.add('js');</script>
@@ -31,7 +43,7 @@
         <a class="btn btn-gold" href="#request" data-request><span data-i18n="hero.cta1">Request access</span><svg class="i flip"><use href="#i-arrow"/></svg></a>
         <a class="btn btn-ghost lg" href="login.html" data-agent-login><svg class="i"><use href="#i-lock"/></svg><span data-i18n="hero.cta2">Agent login</span></a>
       </div>
-      <p class="status-line"><span class="soon-chip" data-i18n="hero.soon">Portal opening soon</span><span data-i18n="hero.note">We work with the travel trade only. We don’t sell to the public.</span></p>
+      <p class="status-line"><span class="status-chip" data-years hidden></span><span data-i18n="hero.note">We work with the travel trade only. We don’t sell to the public.</span></p>
     </div>
 
     <!-- ---------- Access card: request form + agent-login state ---------- -->
@@ -166,14 +178,15 @@
         </div>
       </div>
 
-      <!-- AGENT LOGIN (portal not live yet) -->
+      <!-- AGENT LOGIN: accounts are opened by the team after a request is reviewed. Replace this block
+           with a real sign-in form (or set SITE.portal.loginUrl) once agents get their own logins. -->
       <div class="panel" id="panelLogin" role="tabpanel" aria-labelledby="tabLogin" tabindex="-1" hidden>
-        <div class="soon">
-          <div class="soon-ico"><svg class="i"><use href="#i-lock"/></svg></div>
-          <span class="badge gold" data-i18n="soon.badge">Opening soon</span>
-          <h2 data-i18n="soon.title">Portal opening soon</h2>
-          <p data-i18n="soon.d">The partner portal isn’t live yet, so there’s nothing to sign in to. Request access and we’ll contact you when your account is ready.</p>
-          <button class="btn btn-primary btn-block" type="button" data-go-request><span data-i18n="soon.cta">Request access</span><svg class="i arrow flip"><use href="#i-arrow"/></svg></button>
+        <div class="notice">
+          <div class="notice-ico"><svg class="i"><use href="#i-lock"/></svg></div>
+          <span class="badge gold" data-i18n="acct.badge">By approval</span>
+          <h2 data-i18n="acct.title">Agent accounts</h2>
+          <p data-i18n="acct.d">Accounts are opened by our team once a request has been reviewed. Request access and we’ll contact you with the next steps.</p>
+          <button class="btn btn-primary btn-block" type="button" data-go-request><span data-i18n="acct.cta">Request access</span><svg class="i arrow flip"><use href="#i-arrow"/></svg></button>
         </div>
       </div>
 

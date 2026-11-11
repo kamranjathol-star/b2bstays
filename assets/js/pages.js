@@ -172,10 +172,29 @@
     });
   }
 
+  /* "Trading for 4+ years" chip on the home page. The number comes from SITE.proof.yearsTrading
+     (e.g. 4 or '4+') and nothing is shown while it is empty. */
+  function renderYears() {
+    var chip = $('[data-years]');
+    if (!chip) return;
+    var raw = (SITE.proof || {}).yearsTrading;
+    var m = /^\s*(\d{1,3})\s*(\+?)\s*$/.exec(raw == null ? '' : String(raw));
+    if (!m) { chip.hidden = true; return; }
+    var n = parseInt(m[1], 10), ar = B2B.i18n.getLang() === 'ar', num = n, unit;
+    if (ar) {
+      if (n === 1) { unit = 'سنة'; num = ''; }
+      else if (n === 2) { unit = 'سنتين'; num = ''; }
+      else unit = (n >= 3 && n <= 10) ? 'سنوات' : 'سنة';
+    } else unit = n === 1 ? 'year' : 'years';
+    chip.textContent = t(m[2] ? 'hero.years.plus' : 'hero.years', { n: num, u: unit }).replace(/\s+/g, ' ').trim();
+    chip.hidden = false;
+  }
+
   /* =============================================================
      4. START-UP
      ============================================================= */
-  if (B2B.i18n) B2B.i18n.onChange(renderHours);
+  if (B2B.i18n) B2B.i18n.onChange(function () { renderHours(); renderYears(); });
+  renderYears();
   renderTiles();
   renderServicePhotos();
   initReveal();

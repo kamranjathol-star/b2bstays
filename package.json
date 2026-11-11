@@ -1,0 +1,10 @@
+{
+  "name": "b2bstays-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "B2B Stays trade site: static pages plus a few Vercel functions (access requests and the admin area) in /api.",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "nodemailer": "^10.5.0"
+  }
+}

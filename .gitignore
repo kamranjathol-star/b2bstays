@@ -1,2 +1,7 @@
 .vercel
 node_modules
+
+# secrets: never commit these (settings live in Vercel, not in the repo)
+.env
+.env.*
+*.local

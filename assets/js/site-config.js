@@ -51,14 +51,15 @@ window.SITE = {
                - endpoint empty + contact.email set  -> opens the visitor's email app (mailto)
                - endpoint empty + no email           -> form shows "not connected yet" (nothing is sent) */
   form: {
-    endpoint: '',
+    endpoint: '/api/access-request',   // our own function (api/access-request.js) — see README "Backend"
     timeoutMs: 15000,
     privacyVersion: '2026-11-10',   // bump when you change the privacy policy
   },
 
-  /* Agent login. Leave '' while the portal is not live: every "Agent login"
-     link then shows the "Portal opening soon" state. When the portal exists,
-     put its URL here and all "Agent login" links will point to it. */
+  /* Agent login. Leave '' until agents have a system to sign in to: every "Agent login"
+     link then explains that accounts are opened by the team after a request is reviewed.
+     When agents get their own login, put its URL here and all "Agent login" links will
+     point to it. (The team's admin sign-in is separate: /admin.) */
   portal: { loginUrl: '' },
 
   /* =====================================================================
@@ -180,7 +181,7 @@ window.SITE = {
      company's permission. Never invent numbers, awards or partners.
      ===================================================================== */
   proof: {
-    yearsTrading: '',      // a number, e.g. 12
+    yearsTrading: '4+',    // a number, e.g. 12 — or '4+'. Shown as "Trading for 4+ years" on the home page and in the proof strip.
     cities: '',            // a number, e.g. 4
     hotels: '',            // a number of hotels you can book, e.g. 150
     accreditations: [],    // [{ name: 'Body name', number: 'Membership no.', logo: '', url: '' }]

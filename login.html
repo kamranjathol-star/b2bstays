@@ -7,7 +7,9 @@
   <!-- The login page must not appear in search results. -->
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#04201b">
-  <link rel="icon" href="assets/img/logo-mark.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" href="assets/img/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="stylesheet" href="assets/fonts/fonts.css">
   <link rel="stylesheet" href="assets/css/styles.css">
   <script>document.documentElement.classList.add('js');</script>
@@ -21,17 +23,18 @@
     <div class="hero-bg" data-hero-bg aria-hidden="true"></div>
     <div class="login-inner" id="main" tabindex="-1">
       <!--
-        WHEN THE PORTAL EXISTS: replace this block with the real sign-in form (or set
-        SITE.portal.loginUrl in assets/js/site-config.js to redirect "Agent login" links
-        to your portal). Until then this page only explains the situation.
+        WHEN AGENTS GET THEIR OWN LOGINS: replace this block with the real sign-in form (or set
+        SITE.portal.loginUrl in assets/js/site-config.js to send "Agent login" links to the
+        system agents sign in to). Until then this page explains how accounts are opened.
+        (The team's admin sign-in is separate: /admin)
       -->
       <aside class="access-card" aria-labelledby="loginTitle">
-        <div class="soon">
-          <div class="soon-ico"><svg class="i"><use href="#i-lock"/></svg></div>
-          <span class="badge gold" data-i18n="soon.badge">Opening soon</span>
-          <h1 id="loginTitle" data-i18n="soon.title">Portal opening soon</h1>
-          <p data-i18n="soon.d">The partner portal isn’t live yet, so there’s nothing to sign in to. Request access and we’ll contact you when your account is ready.</p>
-          <a class="btn btn-primary btn-block" href="index.html#request" data-request><span data-i18n="soon.cta">Request access</span><svg class="i arrow flip"><use href="#i-arrow"/></svg></a>
+        <div class="notice">
+          <div class="notice-ico"><svg class="i"><use href="#i-lock"/></svg></div>
+          <span class="badge gold" data-i18n="acct.badge">By approval</span>
+          <h1 id="loginTitle" data-i18n="acct.title">Agent accounts</h1>
+          <p data-i18n="acct.d">Accounts are opened by our team once a request has been reviewed. Request access and we’ll contact you with the next steps.</p>
+          <a class="btn btn-primary btn-block" href="index.html#request" data-request><span data-i18n="acct.cta">Request access</span><svg class="i arrow flip"><use href="#i-arrow"/></svg></a>
         </div>
         <footer class="card-foot">
           <span><svg class="i"><use href="#i-lock"/></svg><span data-i18n="card.foot">We reply using the details you give.</span></span>
